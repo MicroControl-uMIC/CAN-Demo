@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/source/**",
+                "/opt/umic200/sysroot/usr/local/include",
+                "/opt/umic200/sysroot/usr/include/arm-linux-gnueabihf/qt5/"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/arm-linux-gnueabihf-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "gcc-x64",
+            "configurationProvider": "vector-of-bool.cmake-tools"
+        }
+    ],
+    "version": 4
+}
