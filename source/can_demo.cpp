@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
    // clMainT.quit() routine.
    //
    QTimer::singleShot(10000, &clMainT, SLOT(quit()));
-    fprintf(stdout, "Demo will quit in 10 seconds .. \n");
+   fprintf(stdout, "Demo will quit in 10 seconds .. \n");
    clAppT.exec();
 }
 
@@ -106,24 +106,24 @@ int main(int argc, char *argv[])
 CanDemo::CanDemo(QObject *parent) :
     QObject(parent)
 {
-   
-    //---------------------------------------------------------------------------------------------------
-    // connect signals for socket operations
-    //
-    QObject::connect(&clCanSocketP, &QCanSocket::connected,         this, &CanDemo::socketConnected);
+   //---------------------------------------------------------------------------------------------------
+   // connect signals for socket operations
+   //
+   QObject::connect(&clCanSocketP, &QCanSocket::connected,         this, &CanDemo::socketConnected);
 
-    QObject::connect(&clCanSocketP, &QCanSocket::disconnected,      this, &CanDemo::socketDisconnected);
+   QObject::connect(&clCanSocketP, &QCanSocket::disconnected,      this, &CanDemo::socketDisconnected);
    
-   //QObject::connect(&clCanSocketP, &QCanSocket::error, this, &CanDemo::socketError);
-   
-    QObject::connect(&clCanSocketP, &QCanSocket::framesReceived,    this, &CanDemo::socketFramesReceived);
+   QObject::connect(&clCanSocketP, QOverload<QAbstractSocket::SocketError>::of(&QCanSocket::error),         
+                    this, &CanDemo::socketError);
+
+   QObject::connect(&clCanSocketP, &QCanSocket::framesReceived,    this, &CanDemo::socketFramesReceived);
 
 
    
-    //---------------------------------------------------------------------------------------------------
-    // connect to CAN interface
-    //
-    clCanSocketP.connectNetwork(eCAN_CHANNEL_1);
+   //---------------------------------------------------------------------------------------------------
+   // connect to CAN interface
+   //
+   clCanSocketP.connectNetwork(eCAN_CHANNEL_1);
 }
 
 
@@ -202,7 +202,6 @@ void CanDemo::socketDisconnected()
 // CanDemo::socketError()                                                                                            //
 // Show error message and quit                                                                                        //
 //--------------------------------------------------------------------------------------------------------------------//
-/*
 void CanDemo::socketError(QAbstractSocket::SocketError teSocketErrorV)
 {
    Q_UNUSED(teSocketErrorV);  // parameter not used 
@@ -215,7 +214,7 @@ void CanDemo::socketError(QAbstractSocket::SocketError teSocketErrorV)
            qPrintable(clCanSocketP.errorString()));
    quit();
 }
-*/
+
 
 //--------------------------------------------------------------------------------------------------------------------//
 // CanDemo::socketError()                                                                                            //

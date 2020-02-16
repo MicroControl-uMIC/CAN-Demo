@@ -53,7 +53,7 @@ public slots:
 
    void socketConnected();
    void socketDisconnected();
-   //void socketError(QAbstractSocket::SocketError teSocketErrorV);
+   void socketError(QAbstractSocket::SocketError teSocketErrorV);
    void socketFramesReceived(uint32_t ulFrameCntV);
    void quit();
 
