@@ -1,32 +1,13 @@
-# **CANopen Master** Example
+# **CAN** Example
 
-This code provides an example for the CANopen Master library. 
-It scans the network for CANopen slave devices and prints details on the console. The program has
-several options, the used CAN interface must be supplied to start the program.
+This code provides an example for access to the CAN bus. The program sends two CAN messages
+on CAN interface *CAN1* and waits 10 seconds before it quits. CAN messages received by interface
+*CAN1* are printed to the console.
 
-
-
-```
-./canopen-demo --help
-Usage: ./canopen-demo [options] interface
-CANopen Master demo
-
-Options:
-  -h, --help                Displays this help.
-  --heartbeat-cycle <time>  Cycle time for heartbeat service in [ms]
-  --sync-cycle <time>       Cycle time for SYNC service in [ms]
-  -v, --version             Displays version information.
-
-Arguments:
-  interface                 CAN interface, e.g. can1
-```
-
-
-In order to start the demo on CAN1 with a heartbeat cycle time of 500 ms use the following
-command:
+In order to start the demo use the following command:
 
 ```
-./canopen-demo --heartbeat-cycle 500 can1
+./can-demo 
 ```
 
 
@@ -47,7 +28,7 @@ controller.
 
 ```
 ssh umic@umic.200
-./canopen-demo can1
+./can-demo can1
 ```
 
 
@@ -58,7 +39,7 @@ controller. Start the GDB server on the µMIC.200 controller.
 
 ```
 ssh umic@umic.200
-gdbserver :2345 ./canopen-demo can1
+gdbserver :2345 ./can-demo
 ```
 
 
