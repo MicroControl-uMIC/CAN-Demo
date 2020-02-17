@@ -10,6 +10,11 @@ In order to start the demo use the following command:
 ./can-demo 
 ```
 
+## Prerequisites
+
+The project is prepared for the µMIC.200 controller and can be compiled either directly on the controller or within the development virtual machine.
+
+Just download the µMIC.200 [Development Virtual Machine](https://www.microcontrol.net/download/software/umic/vm-umic-2.04.00.ova) and start the development.
 
 ## How to build
 
@@ -17,7 +22,7 @@ Open the project inside Visual Studio Code and select `CMake: Build Target`
 from the Command Palette (`STRG + Shift + P`). As alternative you can press
 `Shift + F7`. 
 
-![ ](docs/VS-Code-CMake.png)
+![ ](docs/VS-Code-CMake.gif)
 
 ## How to run
 
